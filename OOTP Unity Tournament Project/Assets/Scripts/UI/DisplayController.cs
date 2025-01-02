@@ -23,27 +23,27 @@ public class DisplayController : MonoBehaviour
 
 
     void Start() {
+            
+        UpdateDisplay();
         
+    }
+
+    private void UpdateDisplay()
+    {
         ReadStats();
         DisplayStats();
-        
-        
     }
 
 
     void ReadStats()
     {
-        playerAverageString = FormatRateStat(jsonReader.myPlayerList.player[currentPlayer].avg, 4);
-
-
-        
-        
+        playerAverageString = FormatRateStat(jsonReader.myPlayerList.players[currentPlayer].avg, 4);
 
     }
     
     void DisplayStats()
     {
-        playerNameText.text = jsonReader.myPlayerList.player[currentPlayer].title;
+        playerNameText.text = jsonReader.myPlayerList.players[currentPlayer].title;
         playerAverageText.text = "AVG: " + playerAverageString;
     }
 
@@ -78,8 +78,16 @@ public class DisplayController : MonoBehaviour
         if(currentPlayer > 0)
         {
             currentPlayer -= 1;
-            ReadStats();
-            DisplayStats();
+            UpdateDisplay();
+        }
+    }
+
+    public void SetPreviousPlayer()
+    {
+        if(currentPlayer < 5)
+        {
+            currentPlayer += 1;
+            UpdateDisplay();
         }
     }
     

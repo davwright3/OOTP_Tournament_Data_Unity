@@ -11,6 +11,7 @@ public class JsonReader : MonoBehaviour
     public TextAsset textJSON;
 
     [SerializeField] TextMeshProUGUI playerNameText;
+    [SerializeField] private int playerListSize;
 
     [System.Serializable]
     public class Player
@@ -52,16 +53,28 @@ public class JsonReader : MonoBehaviour
     [System.Serializable]
     public class PlayerList
     {
-        public Player[] player;
+        public Player[] players;
     }
 
     public PlayerList myPlayerList = new PlayerList();
 
     void Awake()
     {
-        myPlayerList = JsonUtility.FromJson<PlayerList>(textJSON.text);       
+        myPlayerList = JsonUtility.FromJson<PlayerList>(textJSON.text);  
+        playerListSize = myPlayerList.players.Length;
+          
 
     }
+
+    public int GetPlayerListSize()
+    {
+        return playerListSize;
+    }
     
+
+    public void ChangePosition()
+    {
+        
+    }
     
 }
