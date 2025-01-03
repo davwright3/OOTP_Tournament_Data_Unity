@@ -66,15 +66,23 @@ public class JsonReader : MonoBehaviour
 
     }
 
+    private void UpdatePlayerList()
+    {
+        myPlayerList = JsonUtility.FromJson<PlayerList>(textJSON.text);  
+        playerListSize = myPlayerList.players.Length;
+    }
+
     public int GetPlayerListSize()
     {
         return playerListSize;
     }
     
 
-    public void ChangePosition()
+    public void ChangePosition(TextAsset jsonText)
     {
-        
+        textJSON = jsonText;
+        UpdatePlayerList();
+
     }
     
 }

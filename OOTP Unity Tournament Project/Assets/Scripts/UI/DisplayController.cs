@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,11 +17,6 @@ public class DisplayController : MonoBehaviour
     [SerializeField] string playerAverageString; 
 
     [SerializeField] int currentPlayer = 4;
-
-    
-
-    
-
 
     void Start() {
             
@@ -44,7 +40,7 @@ public class DisplayController : MonoBehaviour
     void DisplayStats()
     {
         playerNameText.text = jsonReader.myPlayerList.players[currentPlayer].title;
-        playerAverageText.text = "AVG: " + playerAverageString;
+        playerAverageText.text = String.Format("AVG: {0:F3}" ,playerAverageString);
     }
 
     private string FormatRateStat(float statToFormat, int decimalPlaces)
@@ -63,10 +59,16 @@ public class DisplayController : MonoBehaviour
             statToFormatString = statToFormatString.Substring(1);
         }
 
-        if(statToFormatString.Length != 4)
+        if(statToFormatString.Length > decimalPlaces)
         {
             statToFormatString = statToFormatString.Substring(0, decimalPlaces);
         }
+
+        while(statToFormatString.Length <4)
+        {
+            statToFormatString = statToFormatString + "0";
+        }
+
 
         return statToFormatString;
     }
@@ -84,11 +86,17 @@ public class DisplayController : MonoBehaviour
 
     public void SetPreviousPlayer()
     {
-        if(currentPlayer < 5)
+        if(currentPlayer < jsonReader.myPlayerList.players.Length - 1)
         {
             currentPlayer += 1;
             UpdateDisplay();
         }
+    }
+
+    public void SetCurrentPlayer(int playerRank)
+    {
+        currentPlayer = playerRank;
+        UpdateDisplay();
     }
     
 }
