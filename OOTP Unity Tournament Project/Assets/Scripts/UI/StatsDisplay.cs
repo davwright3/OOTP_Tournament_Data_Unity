@@ -1,23 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
+using TMPro;
 
-public class DisplayController : MonoBehaviour
+public class StatsDisplay : MonoBehaviour
 {
     [SerializeField] private JsonReader jsonReader;
-
-    [SerializeField] int currentPlayer = 4;
-
     
     [SerializeField] private TextMeshProUGUI playerNameText;
     
-    [SerializeField] private GameObject playeAverageBlock;
+    [SerializeField] private GameObject playerAverageBlock;
     [SerializeField] private GameObject playerObpBlock;
     [SerializeField] private GameObject playerSlgBlock;
     [SerializeField] private GameObject playerOpsBlock;
@@ -54,6 +48,7 @@ public class DisplayController : MonoBehaviour
     
     
 
+    [SerializeField] int currentPlayer = 4;
 
     void Start() {
             
@@ -108,7 +103,7 @@ public class DisplayController : MonoBehaviour
     void DisplayStats()
     {
         playerNameText.text = jsonReader.myPlayerList.players[currentPlayer].title;
-        FillStatBlock(playerAverageString, playerAverageRank, playeAverageBlock);
+        FillStatBlock(playerAverageString, playerAverageRank, playerAverageBlock);
         FillStatBlock(playerOnBasePctString, playerOnBasePctRank, playerObpBlock);
         FillStatBlock(playerSlgString, playerSlgRank, playerSlgBlock);
         FillStatBlock(playerOpsString, playerOpsRank, playerOpsBlock);
@@ -250,5 +245,4 @@ public class DisplayController : MonoBehaviour
         currentPlayer = playerRank;
         UpdateDisplay();
     }
-    
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -51,6 +52,34 @@ public class JsonReader : MonoBehaviour
         public float sbpRank;
         public float sbRank;
         public float wobaRank;
+        public int contact;
+        public int gap;
+        public int power;
+        public int eye;
+        public int avoidk;
+        public int babip;
+        public int contactvL;
+        public int gapvL;
+        public int powervL;
+        public int eyevL;
+        public int avoidkvL;
+        public int babipvL;
+        public int contactvR;
+        public int gapvR;
+        public int powervR;
+        public int eyevR;
+        public int avoidkvR;
+        public int babipvR;
+        public int gbprofile;
+        public int fbprofile;
+        public int batterProfile;
+        public int speed;
+        public int stealRate;
+        public int stealing;
+        public int baserunning;
+        public int sacBunt;
+        public int buntForHit;
+
     }
 
     [System.Serializable]

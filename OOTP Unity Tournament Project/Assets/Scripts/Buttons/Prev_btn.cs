@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Prev_btn : MonoBehaviour
 {
-    [SerializeField] private DisplayController displayController;
+    [SerializeField] private StatsDisplay statsDisplay;
+    [SerializeField] private RatingsDisplay ratingsDisplay;
     [SerializeField] private Button m_prevBtn;
 
     private void Start()
@@ -15,6 +16,8 @@ public class Prev_btn : MonoBehaviour
 
     private void PreviousPlayer()
     {
-        displayController.SetPreviousPlayer();
+        statsDisplay.SetPreviousPlayer();
+        ratingsDisplay.SetPreviousPlayer();
+
     }
 }

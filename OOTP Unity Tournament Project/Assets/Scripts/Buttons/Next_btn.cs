@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Next_btn : MonoBehaviour
 {
-    [SerializeField] private DisplayController displayController;
+    [SerializeField] private StatsDisplay statsDisplay;
+    [SerializeField] private RatingsDisplay ratingsDisplay;
     [SerializeField] Button m_NextBtn;
 
 
@@ -18,7 +19,8 @@ public class Next_btn : MonoBehaviour
 
     private void NextPlayer()
     {
-        displayController.SetNextPlayer();
+        statsDisplay.SetNextPlayer();
+        ratingsDisplay.SetNextPlayer();
 
     }
     
