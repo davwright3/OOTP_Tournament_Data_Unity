@@ -79,6 +79,16 @@ public class JsonReader : MonoBehaviour
         public int baserunning;
         public int sacBunt;
         public int buntForHit;
+        public int catchAbil;
+        public int catchFrame;
+        public int catchArm;
+        public int infRange;
+        public int infError;
+        public int infArm;
+        public int dp;
+        public int outfRange;
+        public int outfError;
+        public int outfArm;
 
     }
 
@@ -127,10 +137,35 @@ public class JsonReader : MonoBehaviour
         public int steal_rate_min;
         public int steal_max;
         public int steal_min;
+        public int baserunning_max;
+        public int baserunning_min;
         public int sac_bunt_max;
         public int sac_bunt_min;
         public int bunt_for_hit_max;
         public int bunt_for_hit_min;
+        public int inf_range_max;
+        public int inf_range_min;
+        public int inf_error_max;
+        public int inf_error_min;
+        public int inf_arm_max;
+        public int inf_arm_min;
+        public int dp_max;
+        public int dp_min;
+        public int catch_abil_max;
+        public int catch_abil_min;
+        public int catch_frame_max;
+        public int catch_frame_min;
+        public int catch_arm_max;
+        public int catch_arm_min;
+        public int outf_range_max;
+        public int outf_range_min;
+        public int outf_error_max;
+        public int outf_error_min;
+        public int outf_arm_max;
+        public int outf_arm_min;
+
+
+
 
     }
 
@@ -171,16 +206,23 @@ public class JsonReader : MonoBehaviour
         playerListSize = myPlayerList.players.Length;
     }
 
+    private void UpdateRatingsList()
+    {
+        myPositionRatingsList = JsonUtility.FromJson<PositionRatingsList>(ratingsTextJSON.text);
+    }
+
     public int GetPlayerListSize()
     {
         return playerListSize;
     }
     
 
-    public void ChangePosition(TextAsset jsonText)
+    public void ChangePosition(TextAsset jsonText, TextAsset jsonRatingsText)
     {
         textJSON = jsonText;
+        ratingsTextJSON = jsonRatingsText;
         UpdatePlayerList();
+        UpdateRatingsList();
 
     }
     

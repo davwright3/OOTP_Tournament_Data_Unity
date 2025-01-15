@@ -43,10 +43,32 @@
             "steal_rate_min": 15,
             "steal_max": 89,
             "steal_min": 12,
+            "baserunning_max": 104,
+            "baserunning_min": 22,
             "sac_bunt_max": 99,
             "sac_bunt_min": 3,
             "bunt_for_hit_max": 92,
-            "bunt_for_hit_min": 1
+            "bunt_for_hit_min": 1,
+            "inf_range_max": 112,
+            "inf_range_min": 6,
+            "inf_error_max": 117,
+            "inf_error_min": 2,
+            "inf_arm_max": 103,
+            "inf_arm_min": 5,
+            "dp_max": 109,
+            "dp_min": 7,
+            "catch_abil_max": 0,
+            "catch_abil_min": 0,
+            "catch_frame_max": 0,
+            "catch_frame_min": 0,
+            "catch_arm_max": 0,
+            "catch_arm_min": 0,
+            "outf__range_max": 93,
+            "outf_range_min": 1,
+            "outf_error_max": 86,
+            "outf_error_min": 1,
+            "outf_arm_max()": 120,
+            "outf_arm_min": 1
         }
     ]
 }

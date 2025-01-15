@@ -59,7 +59,17 @@
             "stealing": 14,
             "baserunning": 29,
             "sacBunt": 55,
-            "buntForHit": 22
+            "buntForHit": 22,
+            "catchAbil": 114,
+            "catchFrame": 102,
+            "catchArm": 104,
+            "infRange": 6,
+            "infError": 4,
+            "infArm": 7,
+            "dp": 8,
+            "outfRange": 6,
+            "outfError": 4,
+            "outfArm": 4
         },
         {
             "index": 23,
@@ -120,7 +130,17 @@
             "stealing": 72,
             "baserunning": 68,
             "sacBunt": 51,
-            "buntForHit": 42
+            "buntForHit": 42,
+            "catchAbil": 103,
+            "catchFrame": 102,
+            "catchArm": 106,
+            "infRange": 2,
+            "infError": 9,
+            "infArm": 8,
+            "dp": 1,
+            "outfRange": 3,
+            "outfError": 7,
+            "outfArm": 5
         },
         {
             "index": 9,
@@ -181,7 +201,17 @@
             "stealing": 6,
             "baserunning": 17,
             "sacBunt": 5,
-            "buntForHit": 9
+            "buntForHit": 9,
+            "catchAbil": 54,
+            "catchFrame": 61,
+            "catchArm": 60,
+            "infRange": 32,
+            "infError": 26,
+            "infArm": 30,
+            "dp": 32,
+            "outfRange": 4,
+            "outfError": 5,
+            "outfArm": 2
         },
         {
             "index": 7,
@@ -242,7 +272,17 @@
             "stealing": 6,
             "baserunning": 11,
             "sacBunt": 19,
-            "buntForHit": 1
+            "buntForHit": 1,
+            "catchAbil": 86,
+            "catchFrame": 99,
+            "catchArm": 89,
+            "infRange": 10,
+            "infError": 8,
+            "infArm": 7,
+            "dp": 1,
+            "outfRange": 1,
+            "outfError": 3,
+            "outfArm": 9
         },
         {
             "index": 4,
@@ -303,7 +343,17 @@
             "stealing": 72,
             "baserunning": 54,
             "sacBunt": 48,
-            "buntForHit": 21
+            "buntForHit": 21,
+            "catchAbil": 71,
+            "catchFrame": 73,
+            "catchArm": 26,
+            "infRange": 57,
+            "infError": 61,
+            "infArm": 71,
+            "dp": 41,
+            "outfRange": 70,
+            "outfError": 95,
+            "outfArm": 94
         },
         {
             "index": 16,
@@ -364,7 +414,17 @@
             "stealing": 73,
             "baserunning": 62,
             "sacBunt": 3,
-            "buntForHit": 8
+            "buntForHit": 8,
+            "catchAbil": 96,
+            "catchFrame": 102,
+            "catchArm": 86,
+            "infRange": 3,
+            "infError": 10,
+            "infArm": 8,
+            "dp": 5,
+            "outfRange": 4,
+            "outfError": 1,
+            "outfArm": 5
         },
         {
             "index": 0,
@@ -425,7 +485,17 @@
             "stealing": 28,
             "baserunning": 49,
             "sacBunt": 69,
-            "buntForHit": 54
+            "buntForHit": 54,
+            "catchAbil": 99,
+            "catchFrame": 104,
+            "catchArm": 110,
+            "infRange": 8,
+            "infError": 7,
+            "infArm": 10,
+            "dp": 10,
+            "outfRange": 2,
+            "outfError": 10,
+            "outfArm": 9
         },
         {
             "index": 10,
@@ -486,7 +556,17 @@
             "stealing": 6,
             "baserunning": 19,
             "sacBunt": 6,
-            "buntForHit": 10
+            "buntForHit": 10,
+            "catchAbil": 93,
+            "catchFrame": 82,
+            "catchArm": 48,
+            "infRange": 1,
+            "infError": 8,
+            "infArm": 5,
+            "dp": 5,
+            "outfRange": 5,
+            "outfError": 10,
+            "outfArm": 2
         },
         {
             "index": 17,
@@ -547,7 +627,17 @@
             "stealing": 45,
             "baserunning": 48,
             "sacBunt": 28,
-            "buntForHit": 4
+            "buntForHit": 4,
+            "catchAbil": 86,
+            "catchFrame": 73,
+            "catchArm": 77,
+            "infRange": 1,
+            "infError": 9,
+            "infArm": 4,
+            "dp": 8,
+            "outfRange": 1,
+            "outfError": 4,
+            "outfArm": 9
         },
         {
             "index": 6,
@@ -608,7 +698,17 @@
             "stealing": 43,
             "baserunning": 41,
             "sacBunt": 6,
-            "buntForHit": 3
+            "buntForHit": 3,
+            "catchAbil": 95,
+            "catchFrame": 83,
+            "catchArm": 81,
+            "infRange": 4,
+            "infError": 10,
+            "infArm": 10,
+            "dp": 3,
+            "outfRange": 4,
+            "outfError": 9,
+            "outfArm": 1
         }
     ]
 }

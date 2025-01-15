@@ -34,6 +34,12 @@ public class RatingsDisplay : MonoBehaviour
     [SerializeField] GameObject avoidKvRRatingBlock;
     [SerializeField] GameObject babipvRRatingBlock;
 
+    [SerializeField] GameObject speedRatingBlock;
+    [SerializeField] GameObject stealAggRatingBlock;
+    [SerializeField] GameObject stealAbilityRatingBlock;
+    [SerializeField] GameObject baserunningRatingBlock;
+
+
     private int minContact;
     private int maxContact;
     private int minGap;
@@ -73,6 +79,15 @@ public class RatingsDisplay : MonoBehaviour
     private int minBabipvR;
     private int maxBabipvR;
 
+    private int minSpeed;
+    private int maxSpeed;
+    private int minStealAgg;
+    private int maxStealAgg;
+    private int minStealAbility;
+    private int maxStealAbility;
+    private int minBaserunning;
+    private int maxBaserunning;
+
     private int playerContactRating;
     private int playerGapRating;
     private int playerPowerRating;
@@ -93,6 +108,11 @@ public class RatingsDisplay : MonoBehaviour
     private int playerEyevRRating;
     private int playerAvoidKvRRating;
     private int playerBabipvRRating;
+
+    private int playerSpeedRating;
+    private int playerStealAggRating;
+    private int playerStealAbilityRating;
+    private int playerBaserunningRating;
 
 
     
@@ -150,6 +170,16 @@ public class RatingsDisplay : MonoBehaviour
         minBabipvR = jsonReader.myPositionRatingsList.ratings[0].r_babip_min;
         maxBabipvR = jsonReader.myPositionRatingsList.ratings[0].r_babip_max;
 
+        maxSpeed = jsonReader.myPositionRatingsList.ratings[0].speed_max;
+        minSpeed = jsonReader.myPositionRatingsList.ratings[0].speed_min;
+        maxStealAgg = jsonReader.myPositionRatingsList.ratings[0].steal_rate_max;
+        minStealAgg = jsonReader.myPositionRatingsList.ratings[0].steal_rate_min;
+        maxStealAbility = jsonReader.myPositionRatingsList.ratings[0].steal_max;
+        minStealAbility = jsonReader.myPositionRatingsList.ratings[0].steal_min;
+        maxBaserunning = jsonReader.myPositionRatingsList.ratings[0].baserunning_max;
+        minBaserunning = jsonReader.myPositionRatingsList.ratings[0].baserunning_min;
+        
+
     }
 
     private void UpdateDisplay()
@@ -177,6 +207,13 @@ public class RatingsDisplay : MonoBehaviour
         DisplayRating(avoidKvRRatingBlock, playerAvoidKvRRating, maxAvoidKvR, minAvoidKvR);
         DisplayRating(babipvRRatingBlock, playerBabipvRRating, maxBabipvR, minBabipvR);
 
+        DisplayRating(speedRatingBlock, playerSpeedRating, maxSpeed, minSpeed);
+        DisplayRating(stealAggRatingBlock, playerStealAggRating, maxStealAgg, minStealAgg);
+        DisplayRating(stealAbilityRatingBlock, playerStealAbilityRating, maxStealAbility, minStealAbility);
+        DisplayRating(baserunningRatingBlock, playerBaserunningRating, maxBaserunning, minBaserunning);
+
+        
+
     }
 
     private void UpdatePlayerRatings()
@@ -201,6 +238,11 @@ public class RatingsDisplay : MonoBehaviour
         playerEyevRRating = jsonReader.myPlayerList.players[currentPlayer].eyevR;
         playerAvoidKvRRating = jsonReader.myPlayerList.players[currentPlayer].avoidkvR;
         playerBabipvRRating = jsonReader.myPlayerList.players[currentPlayer].babipvR;
+
+        playerSpeedRating = jsonReader.myPlayerList.players[currentPlayer].speed;
+        playerStealAggRating = jsonReader.myPlayerList.players[currentPlayer].stealRate;
+        playerStealAbilityRating = jsonReader.myPlayerList.players[currentPlayer].stealing;
+        playerBaserunningRating = jsonReader.myPlayerList.players[currentPlayer].baserunning;
 
 
     }
@@ -233,5 +275,18 @@ public class RatingsDisplay : MonoBehaviour
             currentPlayer += 1;
             UpdateDisplay();
         }
+    }
+
+    
+    public void SetCurrentPlayer(int player)
+    {
+        currentPlayer = player;
+        UpdateDisplay();
+    }
+
+    public void SetNewPosition()
+    {
+        SetPositionRatings();
+        
     }
 }
