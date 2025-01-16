@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class DefenseRatingsDisplay : MonoBehaviour
 {
@@ -8,8 +11,26 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     int currentPlayer = 4;
 
+    [SerializeField] private FieldPosition fieldPosition;
+
 #region DISPLAY_BOXES
     [SerializeField] private GameObject catcherDisplayBox;
+    [SerializeField] private GameObject infieldDisplayBox;
+    [SerializeField] private GameObject outfieldDisplayBox;
+
+
+    [SerializeField] private GameObject catcherAbilBox;
+    [SerializeField] private GameObject catcherFrameBlock;
+    [SerializeField] private GameObject catcherArmBlock;
+
+    [SerializeField] private GameObject infieldRangeBlock;
+    [SerializeField] private GameObject infieldErrorBlock;
+    [SerializeField] private GameObject infieldArmBlock;
+    [SerializeField] private GameObject turnDoublePlayBlock;
+
+    [SerializeField] private GameObject outfieldRangeBlock;
+    [SerializeField] private GameObject outfieldErrorBlock;
+    [SerializeField] private GameObject outfieldArmBlock;
 
 #endregion
 
@@ -63,7 +84,9 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     private void Start()
     {
+        SetFieldPosition(2);
         SetDefensiveRatings();
+        DisplayDefensiveRatings();
     }
 
     
@@ -97,7 +120,34 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     private void DisplayDefensiveRatings()
     {
+        SetDefensiveRatings();
+   
         UpdatePlayerRatings();
+
+        DisplayRating(catcherAbilBox, playerCatchAbil, maxCatchAbil, minCatchAbil);
+        DisplayRating(catcherFrameBlock, playerCatchFrame, maxCatchFrame, minCatchFrame);
+        DisplayRating(catcherArmBlock, playerCatchArm, maxCatchArm, minCatchArm);
+
+        DisplayRating(infieldRangeBlock, playerInfRange, maxInfRange, minInfRange);
+        DisplayRating(infieldErrorBlock, playerInfError, maxInfError, minInfError);
+        DisplayRating(infieldArmBlock, playerInfArm, maxInfArm, minInfArm);
+        DisplayRating(turnDoublePlayBlock, playerDp, maxDp, minDp);
+
+        DisplayRating(outfieldRangeBlock, playerOutfRange, maxOutfRange, minOutfRange);
+        DisplayRating(outfieldErrorBlock, playerOutfError, maxOutfError, minOutfError);
+        DisplayRating(outfieldArmBlock, playerOutfArm, maxOutfArm, minOutfArm);
+
+        
+    }
+
+    private void DisplayRating(GameObject ratingBlock, int rating, int maxRating, int minRating)
+    {
+        TextMeshProUGUI ratingTextBox = ratingBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();  
+        ratingTextBox.text = rating.ToString();
+        Transform ratingBarParent = ratingBlock.transform.Find("Rating_bar").GetComponent<Transform>();
+        Image ratingBarImage = ratingBarParent.transform.Find("Foreground_image").GetComponent<Image>();
+        ratingBarImage.fillAmount = (float)(rating-minRating)/(maxRating-minRating);
+        
     }
 
     private void UpdatePlayerRatings()
@@ -124,7 +174,7 @@ public class DefenseRatingsDisplay : MonoBehaviour
         }
     }
 
-    public void SetPreviousplayer()
+    public void SetPreviousPlayer()
     {
         if(currentPlayer < jsonReader.GetPlayerListSize() -1)
         {
@@ -137,5 +187,38 @@ public class DefenseRatingsDisplay : MonoBehaviour
     {
         currentPlayer = player;
         DisplayDefensiveRatings();
+    }
+
+    public void SetFieldPosition(int positionToSet)
+    {
+        fieldPosition = (FieldPosition)positionToSet;
+
+        switch(fieldPosition)
+        {
+            case FieldPosition.infield:
+                catcherDisplayBox.gameObject.SetActive(false);
+                infieldDisplayBox.gameObject.SetActive(true);
+                outfieldDisplayBox.gameObject.SetActive(false);
+                break;
+            case FieldPosition.outfield:
+                catcherDisplayBox.gameObject.SetActive(false);
+                infieldDisplayBox.gameObject.SetActive(false);
+                outfieldDisplayBox.gameObject.SetActive(true);
+                break;
+            case FieldPosition.catcher:
+                catcherDisplayBox.gameObject.SetActive(true);
+                infieldDisplayBox.gameObject.SetActive(false);
+                outfieldDisplayBox.gameObject.SetActive(false);
+                break;
+        }
+
+        
     }   
+}
+
+[Serializable]
+public enum FieldPosition{
+    infield,
+    outfield,
+    catcher
 }

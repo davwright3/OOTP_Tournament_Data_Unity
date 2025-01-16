@@ -7,6 +7,7 @@ public class Prev_btn : MonoBehaviour
 {
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private RatingsDisplay ratingsDisplay;
+    [SerializeField] private DefenseRatingsDisplay defenseRatingsDisplay;
     [SerializeField] private Button m_prevBtn;
 
     private void Start()
@@ -18,6 +19,7 @@ public class Prev_btn : MonoBehaviour
     {
         statsDisplay.SetPreviousPlayer();
         ratingsDisplay.SetPreviousPlayer();
+        defenseRatingsDisplay.SetPreviousPlayer();
 
     }
 }

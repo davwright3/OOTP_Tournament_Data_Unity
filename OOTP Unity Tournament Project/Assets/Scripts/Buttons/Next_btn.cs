@@ -7,6 +7,7 @@ public class Next_btn : MonoBehaviour
 {
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private RatingsDisplay ratingsDisplay;
+    [SerializeField] private DefenseRatingsDisplay defenseRatingsDisplay;
     [SerializeField] Button m_NextBtn;
 
 
@@ -21,6 +22,8 @@ public class Next_btn : MonoBehaviour
     {
         statsDisplay.SetNextPlayer();
         ratingsDisplay.SetNextPlayer();
+        defenseRatingsDisplay.SetNextPlayer();
+        
 
     }
     
