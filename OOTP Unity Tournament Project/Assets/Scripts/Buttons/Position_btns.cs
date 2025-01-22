@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,13 @@ public class Position_btns : MonoBehaviour
     [SerializeField] RatingsDisplay ratingsDisplay;
     [SerializeField] DefenseRatingsDisplay defenseRatingsDisplay;
     [SerializeField] JsonReader jsonReader;
+    [SerializeField] GameObject batterDisplayBox;
+    [SerializeField] GameObject startingPitcherDisplayBox;
+    [SerializeField] GameObject reliefPitcherDisplayBox;
+    [SerializeField] StartingPitcherStatsDisplay startingPitcherStatsDisplay;
+    [SerializeField] StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
+    [SerializeField] StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
+
 
     [SerializeField] Button m_catcherBtn;
     [SerializeField] Button m_firstBaseBtn;
@@ -18,6 +26,8 @@ public class Position_btns : MonoBehaviour
     [SerializeField] Button m_LeftFieldBtn;
     [SerializeField] Button m_CenterFieldBtn;
     [SerializeField] Button m_RightFieldBtn;
+    [SerializeField] Button m_StartingPitcherBtn;
+    [SerializeField] Button m_ReliefPitcherBtn;
 
     private void Start()
     {
@@ -29,6 +39,8 @@ public class Position_btns : MonoBehaviour
         m_LeftFieldBtn.onClick.AddListener(SetLeftField);
         m_CenterFieldBtn.onClick.AddListener(SetCenterField);
         m_RightFieldBtn.onClick.AddListener(SetRightField);
+        m_StartingPitcherBtn.onClick.AddListener(SetStartingPitcher);
+        m_ReliefPitcherBtn.onClick.AddListener(SetReliefPItcher);
     }
 
     private void SetCatcher()
@@ -104,6 +116,26 @@ public class Position_btns : MonoBehaviour
         
     }
 
+    private void SetStartingPitcher()
+    {
+        batterDisplayBox.gameObject.SetActive(false);
+        reliefPitcherDisplayBox.gameObject.SetActive(false);
+        startingPitcherDisplayBox.gameObject.SetActive(true);
+        startingPitcherStatsDisplay.SetCurrentPlayer(4);
+        startingPitcherRatingsDisplay.SetCurrentPlayer(4);
+        startingPitcherIndividualPitchDisplay.SetCurrentPlayer(4);
+        PositionDisplaySelector.Instance.SetPositionDisplay(1);
+
+    }
+
+    private void SetReliefPItcher()
+    {
+        batterDisplayBox.gameObject.SetActive(false);
+        reliefPitcherDisplayBox.gameObject.SetActive(true);
+        startingPitcherDisplayBox.gameObject.SetActive(false);
+        PositionDisplaySelector.Instance.SetPositionDisplay(2);
+    }
+
     private void SetNewPosition()
     {
         
@@ -111,7 +143,14 @@ public class Position_btns : MonoBehaviour
         ratingsDisplay.SetCurrentPlayer(4);
         ratingsDisplay.SetNewPosition();
         defenseRatingsDisplay.SetCurrentPlayer(4);
+        startingPitcherDisplayBox.gameObject.SetActive(false);
+        reliefPitcherDisplayBox.gameObject.SetActive(false);        
+        batterDisplayBox.gameObject.SetActive(true);
+        PositionDisplaySelector.Instance.SetPositionDisplay(0);
+
 
     }
+
+    
 
 }

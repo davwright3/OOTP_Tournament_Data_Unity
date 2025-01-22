@@ -63,11 +63,11 @@
             "catch_frame_min": 59,
             "catch_arm_max": 110,
             "catch_arm_min": 26,
-            "outf__range_max": 70,
+            "outf_range_max": 70,
             "outf_range_min": 1,
             "outf_error_max": 95,
             "outf_error_min": 1,
-            "outf_arm_max()": 94,
+            "outf_arm_max": 94,
             "outf_arm_min": 1
         }
     ]

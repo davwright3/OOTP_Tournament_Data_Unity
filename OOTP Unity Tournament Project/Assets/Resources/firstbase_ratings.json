@@ -28,7 +28,7 @@
             "r_contact_max": 131,
             "r_contact_min": 49,
             "r_gap_max": 118,
-            "r_gap_min": 51,
+            "r_gap_min": 50,
             "r_power_max": 146,
             "r_power_min": 28,
             "r_eye_max": 139,
@@ -63,11 +63,11 @@
             "catch_frame_min": 0,
             "catch_arm_max": 81,
             "catch_arm_min": 0,
-            "outf__range_max": 98,
+            "outf_range_max": 98,
             "outf_range_min": 1,
             "outf_error_max": 120,
             "outf_error_min": 1,
-            "outf_arm_max()": 109,
+            "outf_arm_max": 109,
             "outf_arm_min": 1
         }
     ]

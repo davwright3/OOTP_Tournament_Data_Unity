@@ -6,7 +6,7 @@
             "gap_max": 130,
             "gap_min": 39,
             "power_max": 102,
-            "power_min": 21,
+            "power_min": 18,
             "eye_max": 115,
             "eye_min": 44,
             "avk_max": 173,
@@ -16,7 +16,7 @@
             "l_contact_max": 141,
             "l_contact_min": 43,
             "l_gap_max": 151,
-            "l_gap_min": 46,
+            "l_gap_min": 40,
             "l_power_max": 117,
             "l_power_min": 11,
             "l_eye_max": 124,
@@ -63,11 +63,11 @@
             "catch_frame_min": 0,
             "catch_arm_max": 0,
             "catch_arm_min": 0,
-            "outf__range_max": 93,
+            "outf_range_max": 93,
             "outf_range_min": 1,
             "outf_error_max": 73,
             "outf_error_min": 1,
-            "outf_arm_max()": 120,
+            "outf_arm_max": 120,
             "outf_arm_min": 1
         }
     ]

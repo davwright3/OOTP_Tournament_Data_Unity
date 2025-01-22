@@ -14,8 +14,14 @@ public class JsonReader : MonoBehaviour
     public TextAsset textJSON;
     public TextAsset ratingsTextJSON;
 
-    [SerializeField] TextMeshProUGUI playerNameText;
-    [SerializeField] private int playerListSize;
+    public TextAsset startingPitcherTextJson;
+    public TextAsset reliefPitcherTextJson;
+    
+    public TextAsset pitcherRatingsJson;
+
+    private int playerListSize;
+    private int startingPitcherListSize;
+    private int reliefPitcherListSize;
 
     [System.Serializable]
     public class Player
@@ -164,11 +170,184 @@ public class JsonReader : MonoBehaviour
         public int outf_arm_max;
         public int outf_arm_min;
 
-
-
-
     }
 
+    [System.Serializable]
+    public class StartingPitcher{
+        public int cid;
+        public string title;
+        public float fip;
+        public float war;
+        public float ipc;
+        public int w;
+        public int l;
+        public float wpct;
+        public float era;
+        public float kp9;
+        public float bbp9;
+        public float hrp9;
+        public float qspct;
+        public float gbrate;
+        public float fipRank;
+        public float warRank;
+        public float wpctRank;
+        public float eraRank;
+        public float kRank;
+        public float bbRank;
+        public float hrRank;
+        public float qsRank;
+        public float gbRateRank;
+        public int stuff;
+        public int movement;
+        public int control;
+        public int pHR;
+        public int pBabip;
+        public int stuffvL;
+        public int movementvL;
+        public int controlvL;
+        public int pHRvL;
+        public int pBabipvL;
+        public int stuffvR;
+        public int movementvR;
+        public int controlvR;
+        public int pHRvR;
+        public int pBabipvR;
+        public int fastball;
+        public int slider;
+        public int curveball;
+        public int changeup;
+        public int cutter;
+        public int sinker;
+        public int splitter;
+        public int forkball;
+        public int screwball;
+        public int circlechange;
+        public int knucklecurve;
+        public int knuckleball;
+        public int stamina;
+        public int hold;
+        public int gb;
+        public string velocity;
+        public int armSlot;
+        
+    }
+
+    [System.Serializable]
+    public class ReliefPitcher{
+        public int cid;
+        public string title;
+        public float fip;
+        public float era;
+        public float war;
+        public float ipc;
+        public float saves;
+        public float svo;
+        public int sd;
+        public int md;
+        public int ir;
+        public int irs;
+        public float svPct;
+        public float sdPerMd;
+        public float irsPct;
+        public float gbRate;
+        public float hrRate;
+        public float fipRank;
+        public float eraRank;
+        public float warRank;
+        public float kRank;
+        public float bbRank;
+        public float hrRank;
+        public float svPctRank;
+        public float sdPerMdRank;
+        public float irsPctRank;
+        public float gbRateRank;
+        public int stuff;
+        public int movement;
+        public int control;
+        public int pHR;
+        public int pBabip;
+        public int stuffvL;
+        public int movementvL;
+        public int controlvL;
+        public int pHRvL;
+        public int pBabipvL;
+        public int stuffvR;
+        public int movementvR;
+        public int controlvR;
+        public int pHRvR;
+        public int pBabipvR;
+        public int fastball;
+        public int slider;
+        public int curveball;
+        public int changeup;
+        public int cutter;
+        public int sinker;
+        public int splitter;
+        public int forkball;
+        public int screwball;
+        public int circlechange;
+        public int knucklecurve;
+        public int knuckleball;
+        public int stamina;
+        public int hold;
+        public int gb;
+        public string velocity;
+        public int armSlot;
+        
+
+    }
+    
+    [System.Serializable]
+    public class PitcherRatings{
+        public int stuff_max;
+        public int stuff_min;
+        public int movement_max;
+        public int movement_min;
+        public int control_max;
+        public int control_min;
+        public int pHR_max;
+        public int pHR_min;
+        public int pBabip_max;
+        public int pBabip_min;
+        public int stuffvL_max;
+        public int stuffvL_min;
+        public int movementvL_max;
+        public int movementvL_min;
+        public int controlvL_max;
+        public int controlvL_min;
+        public int pHRvL_max;
+        public int pHRvL_min;
+        public int pBabipvL_max;
+        public int pBabipvL_min;
+        public int stuffvR_max;
+        public int stuffvR_min;
+        public int movementvR_max;
+        public int movementvR_min;
+        public int controlvR_max;
+        public int controlvR_min;
+        public int pHRvR_max;
+        public int pHRvR_min;
+        public int pBabipvR_max;
+        public int pBabipvR_min;
+        public int stamina_max;
+        public int stamina_min;
+        public int hold_max;
+        public int hold_min;
+        public int fastball_max;
+        public int slider_max;
+        public int curveball_max;
+        public int changeup_max;
+        public int cutter_max;
+        public int sinker_max;
+        public int splitter_max;
+        public int forkball_max;
+        public int screwball_max;
+        public int circlechange_max;
+        public int knucklecurve_max;
+        public int knuckleball_max;
+        
+    }
+    
     [System.Serializable]
     public class PlayerList
     {
@@ -181,8 +360,29 @@ public class JsonReader : MonoBehaviour
         public PositionRatings[] ratings;
     }
 
+    [System.Serializable]
+    public class StartingPitcherList
+    {
+        public StartingPitcher[] starting_pitchers;
+    }
+
+    [System.Serializable] 
+    public class ReliefPitcherList
+    {
+        public ReliefPitcher[] relief_pitchers;
+    }
+
+    [System.Serializable]
+    public class PitcherRatingsList
+    {
+        public PitcherRatings[] pitcher_ratings;
+    }
+
     public PlayerList myPlayerList = new PlayerList();
     public PositionRatingsList myPositionRatingsList = new PositionRatingsList();
+    public StartingPitcherList myStartingPitcherlist = new StartingPitcherList();
+    public ReliefPitcherList myReliefPitcherList = new ReliefPitcherList();
+    public PitcherRatingsList myPitcherRatingsList = new PitcherRatingsList();
 
     void Awake()
     {
@@ -197,6 +397,14 @@ public class JsonReader : MonoBehaviour
         playerListSize = myPlayerList.players.Length;
 
         myPositionRatingsList = JsonUtility.FromJson<PositionRatingsList>(ratingsTextJSON.text);
+
+        myStartingPitcherlist = JsonUtility.FromJson<StartingPitcherList>(startingPitcherTextJson.text);
+        startingPitcherListSize = myStartingPitcherlist.starting_pitchers.Length;
+
+        myReliefPitcherList = JsonUtility.FromJson<ReliefPitcherList>(reliefPitcherTextJson.text);
+        reliefPitcherListSize = myReliefPitcherList.relief_pitchers.Length;
+
+        myPitcherRatingsList = JsonUtility.FromJson<PitcherRatingsList>(pitcherRatingsJson.text);
      
     }
 
@@ -214,6 +422,16 @@ public class JsonReader : MonoBehaviour
     public int GetPlayerListSize()
     {
         return playerListSize;
+    }
+
+    public int GetStartingPitcherListSize()
+    {
+        return startingPitcherListSize;
+    }
+
+    public int GetReliefpitcherListSize()
+    {
+        return reliefPitcherListSize;
     }
     
 
