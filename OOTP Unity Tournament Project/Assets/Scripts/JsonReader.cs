@@ -250,6 +250,8 @@ public class JsonReader : MonoBehaviour
         public float sdPerMd;
         public float irsPct;
         public float gbRate;
+        public float kRate;
+        public float bbRate;
         public float hrRate;
         public float fipRank;
         public float eraRank;

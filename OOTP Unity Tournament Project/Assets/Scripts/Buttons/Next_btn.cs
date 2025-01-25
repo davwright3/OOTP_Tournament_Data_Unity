@@ -8,9 +8,12 @@ public class Next_btn : MonoBehaviour
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private RatingsDisplay ratingsDisplay;
     [SerializeField] private DefenseRatingsDisplay defenseRatingsDisplay;
-    [SerializeField] StartingPitcherStatsDisplay startingPitcherStatsDisplay;
-    [SerializeField] StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
-    [SerializeField] StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
+    [SerializeField] private StartingPitcherStatsDisplay startingPitcherStatsDisplay;
+    [SerializeField] private StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
+    [SerializeField] private StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
+    [SerializeField] private ReliefPitcherStatsDisplay reliefPitcherStatsDisplay;
+    [SerializeField] private ReliefPitcherRatingsDisplay reliefPitcherRatingsDisplay;
+    [SerializeField] private ReliefPitcherIndividualPitchDisplay reliefPitcherIndividualPitchDisplay;
     [SerializeField] Button m_NextBtn;
 
 
@@ -35,6 +38,12 @@ public class Next_btn : MonoBehaviour
                 startingPitcherStatsDisplay.SetNextPlayer();
                 startingPitcherRatingsDisplay.SetNextPlayer();
                 startingPitcherIndividualPitchDisplay.SetNextPlayer();
+                break;
+
+            case PositionDisplay.reliefPitcher:
+                reliefPitcherStatsDisplay.SetNextPlayer();
+                reliefPitcherRatingsDisplay.SetNextPlayer();
+                reliefPitcherIndividualPitchDisplay.SetNextPlayer();
                 break;
 
             

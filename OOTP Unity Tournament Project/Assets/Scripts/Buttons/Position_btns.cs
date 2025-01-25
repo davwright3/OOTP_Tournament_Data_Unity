@@ -16,6 +16,9 @@ public class Position_btns : MonoBehaviour
     [SerializeField] StartingPitcherStatsDisplay startingPitcherStatsDisplay;
     [SerializeField] StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
     [SerializeField] StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
+    [SerializeField] ReliefPitcherStatsDisplay reliefPitcherStatsDisplay;
+    [SerializeField] ReliefPitcherRatingsDisplay reliefPitcherRatingsDisplay;
+    [SerializeField] private ReliefPitcherIndividualPitchDisplay reliefPitcherIndividualPitchDisplay;
 
 
     [SerializeField] Button m_catcherBtn;
@@ -133,6 +136,9 @@ public class Position_btns : MonoBehaviour
         batterDisplayBox.gameObject.SetActive(false);
         reliefPitcherDisplayBox.gameObject.SetActive(true);
         startingPitcherDisplayBox.gameObject.SetActive(false);
+        reliefPitcherStatsDisplay.SetCurrentPlayer(4);
+        reliefPitcherRatingsDisplay.SetCurrentPlayer(4);
+        reliefPitcherIndividualPitchDisplay.SetCurrentPlayer(4);
         PositionDisplaySelector.Instance.SetPositionDisplay(2);
     }
 

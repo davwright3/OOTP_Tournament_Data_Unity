@@ -11,6 +11,9 @@ public class Prev_btn : MonoBehaviour
     [SerializeField] private StartingPitcherStatsDisplay startingPitcherStatsDisplay;
     [SerializeField] private StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
     [SerializeField] private StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
+    [SerializeField] private ReliefPitcherStatsDisplay reliefPitcherStatsDisplay;
+    [SerializeField] private ReliefPitcherRatingsDisplay reliefPitcherRatingsDisplay;
+    [SerializeField] private ReliefPitcherIndividualPitchDisplay reliefPitcherIndividualPitchDisplay;
     [SerializeField] private Button m_prevBtn;
 
     private void Start()
@@ -32,6 +35,12 @@ public class Prev_btn : MonoBehaviour
                 startingPitcherStatsDisplay.SetPreviousPlayer();
                 startingPitcherRatingsDisplay.SetPreviousPlayer();
                 startingPitcherIndividualPitchDisplay.SetPreviousPlayer();
+                break;
+
+            case PositionDisplay.reliefPitcher:
+                reliefPitcherStatsDisplay.SetPreviousPlayer();
+                reliefPitcherRatingsDisplay.SetNextPlayer();
+                reliefPitcherIndividualPitchDisplay.SetNextPlayer();
                 break;
         }
         
