@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +21,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
     [SerializeField] private GameObject irsPctBlock;
     [SerializeField] private GameObject gbPctBlock;
     [SerializeField] private GameObject warBlock;
+    [SerializeField] private TextMeshProUGUI ipcText;
 
     private float playerFip;
     private float playerEra;
@@ -33,6 +33,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
     private float playerIrsPct;
     private float playerGroundballPct;
     private float playerWar;
+    private float playerIpc;
 
     private int playerFipRank;
     private int playerEraRank;
@@ -44,6 +45,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
     private int playerIrsPctRank;
     private int playerGroundballPctRank;
     private int playerWarRank;
+    private int playerCid;
 
     
 
@@ -57,6 +59,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
         playerNameBox.text = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].title;
         UpdatePlayerStats();
         UpdateDisplayBlocks();
+        UpdateInCollectionDisplay.Instance.UpdateCollectionObjectDisplay(playerCid);
 
 
     }
@@ -92,6 +95,9 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
 
         playerWar  = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].war;
         playerWarRank = (int)JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].warRank;
+
+        playerCid = (int)JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].cid;
+        playerIpc = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].ipc;
     }
 
     private void UpdateDisplayBlocks()
@@ -106,6 +112,8 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
         UpdateFloatDisplayBlock(irsPctBlock, playerIrsPct, playerIrsPctRank);
         UpdateFloatDisplayBlock(gbPctBlock, playerGroundballPct, playerGroundballPctRank);
         UpdateFloatDisplayBlock(warBlock, playerWar, playerWarRank);
+
+        ipcText.text = playerIpc.ToString();
     }
 
     private void UpdateFloatDisplayBlock(GameObject statBlock, float stat, int rank)
@@ -121,7 +129,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
         }
         else
         {
-            image.GetComponent<Image>().color = Color.white;
+            image.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         }
     }
 

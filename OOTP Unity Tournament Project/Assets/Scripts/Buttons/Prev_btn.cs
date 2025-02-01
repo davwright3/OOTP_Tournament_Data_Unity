@@ -39,8 +39,8 @@ public class Prev_btn : MonoBehaviour
 
             case PositionDisplay.reliefPitcher:
                 reliefPitcherStatsDisplay.SetPreviousPlayer();
-                reliefPitcherRatingsDisplay.SetNextPlayer();
-                reliefPitcherIndividualPitchDisplay.SetNextPlayer();
+                reliefPitcherRatingsDisplay.SetPreviousPlayer();
+                reliefPitcherIndividualPitchDisplay.SetPreviousPlayer();
                 break;
         }
         

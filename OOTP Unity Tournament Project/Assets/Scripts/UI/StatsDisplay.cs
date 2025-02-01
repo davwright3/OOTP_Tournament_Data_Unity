@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class StatsDisplay : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class StatsDisplay : MonoBehaviour
     [SerializeField] private GameObject playerSBpBlock;
     [SerializeField] private GameObject playerSBBlock;
     [SerializeField] private GameObject playerWARBlock;
+    [SerializeField] private TextMeshProUGUI playerPaText;
   
     private string playerAverageString; 
     private int playerAverageRank;
@@ -45,6 +47,8 @@ public class StatsDisplay : MonoBehaviour
     private int playerSBRank;
     private string playerWarString;
     private int playerWarRank;
+    private int playerCid;
+    private int playerPa;
     
     
 
@@ -60,6 +64,7 @@ public class StatsDisplay : MonoBehaviour
     {
         ReadStats();
         DisplayStats();
+        UpdateInCollectionDisplay.Instance.UpdateCollectionObjectDisplay(playerCid);
     }
 
 
@@ -98,6 +103,9 @@ public class StatsDisplay : MonoBehaviour
         playerWarString = FormatCountingStat(jsonReader.myPlayerList.players[currentPlayer].war, 2);
         playerWarRank = (int)jsonReader.myPlayerList.players[currentPlayer].warRank;
 
+        playerCid = (int)jsonReader.myPlayerList.players[currentPlayer].cid;
+        playerPa = (int)JsonReader.Instance.myPlayerList.players[currentPlayer].pa;
+
     }
     
     void DisplayStats()
@@ -115,6 +123,9 @@ public class StatsDisplay : MonoBehaviour
         FillStatBlock(playerSBString, playerSBRank, playerSBBlock);
         FillStatBlock(playerWarString, playerWarRank, playerWARBlock);
         
+        playerPaText.text = playerPa.ToString();
+        
+        
     }
 
     private void FillStatBlock(string statToDisplay, int statRank, GameObject statBlock)
@@ -130,7 +141,7 @@ public class StatsDisplay : MonoBehaviour
         }
         else
         {
-            image.GetComponent<Image>().color = Color.white;
+            image.GetComponent<Image>().color = new Color32(0,0,0,0);
         }
         
         
@@ -149,7 +160,7 @@ public class StatsDisplay : MonoBehaviour
         }
         else
         {
-            image.GetComponent<Image>().color = Color.white;
+            image.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         }
         
         

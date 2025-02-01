@@ -19,9 +19,13 @@ public class JsonReader : MonoBehaviour
     
     public TextAsset pitcherRatingsJson;
 
+    public TextAsset cardCollectionJson;
+
     private int playerListSize;
     private int startingPitcherListSize;
     private int reliefPitcherListSize;
+
+    
 
     [System.Serializable]
     public class Player
@@ -351,6 +355,11 @@ public class JsonReader : MonoBehaviour
     }
     
     [System.Serializable]
+    public class Card{
+        public int CID;
+    }
+    
+    [System.Serializable]
     public class PlayerList
     {
         public Player[] players;
@@ -380,11 +389,19 @@ public class JsonReader : MonoBehaviour
         public PitcherRatings[] pitcher_ratings;
     }
 
+    [System.Serializable]
+    public class CardList{
+        public Card[] cards;
+    }
+
     public PlayerList myPlayerList = new PlayerList();
     public PositionRatingsList myPositionRatingsList = new PositionRatingsList();
     public StartingPitcherList myStartingPitcherlist = new StartingPitcherList();
     public ReliefPitcherList myReliefPitcherList = new ReliefPitcherList();
     public PitcherRatingsList myPitcherRatingsList = new PitcherRatingsList();
+    public CardList myCardlist = new CardList();
+
+    public List<int> collectionList;
 
     void Awake()
     {
@@ -407,6 +424,11 @@ public class JsonReader : MonoBehaviour
         reliefPitcherListSize = myReliefPitcherList.relief_pitchers.Length;
 
         myPitcherRatingsList = JsonUtility.FromJson<PitcherRatingsList>(pitcherRatingsJson.text);
+
+        myCardlist = JsonUtility.FromJson<CardList>(cardCollectionJson.text);
+
+        collectionList = new List<int>();
+        FillCollectionList();
      
     }
 
@@ -435,6 +457,11 @@ public class JsonReader : MonoBehaviour
     {
         return reliefPitcherListSize;
     }
+
+    public int GetCardListSize()
+    {
+        return myCardlist.cards.Length;
+    }
     
 
     public void ChangePosition(TextAsset jsonText, TextAsset jsonRatingsText)
@@ -445,5 +472,15 @@ public class JsonReader : MonoBehaviour
         UpdateRatingsList();
 
     }
+
+    private void FillCollectionList()
+    {
+        for(int i = 0; i < GetCardListSize(); i++)
+        {
+            collectionList.Add(myCardlist.cards[i].CID);
+        }
+    }
+
+    
     
 }

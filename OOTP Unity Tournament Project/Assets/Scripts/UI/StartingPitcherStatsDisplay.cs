@@ -21,6 +21,7 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
     private float playerQSPct;
     private float playerGBPct;
     private float playerWar;
+    private float playerIpc;
 
     private int playerFipRank;
     private int playerEraRank;
@@ -30,6 +31,7 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
     private int playerQSPctRank;
     private int playerGBPctRank;
     private int playerWarRank;
+    private int playerCid;
 
     [SerializeField] private GameObject fipBlock;
     [SerializeField] private GameObject eraBlock;
@@ -39,6 +41,7 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
     [SerializeField] private GameObject qsBlock;
     [SerializeField] private GameObject groundabllBlock;
     [SerializeField] private GameObject warBlock;
+    [SerializeField] private TextMeshProUGUI ipcText;
 
 
 
@@ -53,6 +56,7 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
 
         UpdatePlayerStats();
         UpdateStatsBlocks();
+        UpdateInCollectionDisplay.Instance.UpdateCollectionObjectDisplay(playerCid);
     }
 
     private void UpdatePlayerStats()
@@ -80,6 +84,11 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
 
         playerWar = jsonReader.myStartingPitcherlist.starting_pitchers[currentPlayer].war;
         playerWarRank = (int)jsonReader.myStartingPitcherlist.starting_pitchers[currentPlayer].warRank;
+
+        playerCid = (int)jsonReader.myStartingPitcherlist.starting_pitchers[currentPlayer].cid;
+        playerIpc = JsonReader.Instance.myStartingPitcherlist.starting_pitchers[currentPlayer].ipc;
+
+
     }
 
     private void UpdateStatsBlocks()
@@ -92,6 +101,10 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
         UpdateFloatStatBlock(qsBlock, playerQSPct, playerQSPctRank);
         UpdateFloatStatBlock(groundabllBlock, playerGBPct, playerGBPctRank);
         UpdateFloatStatBlock(warBlock, playerWar, playerWarRank);
+
+        ipcText.text = playerIpc.ToString();
+
+        
     }
 
     private void UpdateFloatStatBlock(GameObject statBlock, float stat, int rank)
@@ -107,7 +120,7 @@ public class StartingPitcherStatsDisplay : MonoBehaviour
         }
         else
         {
-            image.GetComponent<Image>().color = Color.white;
+            image.GetComponent<Image>().color = new Color32(0,0,0,0);
         }
     }
 
