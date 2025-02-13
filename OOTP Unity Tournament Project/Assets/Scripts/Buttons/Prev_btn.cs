@@ -8,6 +8,7 @@ public class Prev_btn : MonoBehaviour
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private RatingsDisplay ratingsDisplay;
     [SerializeField] private DefenseRatingsDisplay defenseRatingsDisplay;
+    [SerializeField] private DisplayValidPositions displayValidPositions;
     [SerializeField] private StartingPitcherStatsDisplay startingPitcherStatsDisplay;
     [SerializeField] private StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
     [SerializeField] private StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
@@ -29,6 +30,7 @@ public class Prev_btn : MonoBehaviour
                 statsDisplay.SetPreviousPlayer();
                 ratingsDisplay.SetPreviousPlayer();
                 defenseRatingsDisplay.SetPreviousPlayer();
+                displayValidPositions.SetPreviousPlayer();
                 break;
             
             case PositionDisplay.startingPitcher:

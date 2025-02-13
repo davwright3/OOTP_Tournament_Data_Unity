@@ -9,6 +9,7 @@ public class Position_btns : MonoBehaviour
     [SerializeField] StatsDisplay statsDisplay;
     [SerializeField] RatingsDisplay ratingsDisplay;
     [SerializeField] DefenseRatingsDisplay defenseRatingsDisplay;
+    [SerializeField] DisplayValidPositions displayValidPositions;
     [SerializeField] JsonReader jsonReader;
     [SerializeField] GameObject batterDisplayBox;
     [SerializeField] GameObject startingPitcherDisplayBox;
@@ -50,7 +51,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("catchers") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("catcher_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(2);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -59,7 +59,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("firstbase") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("firstbase_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(0);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -68,7 +67,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("secondbase") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("secondbase_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(0);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -77,7 +75,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("thirdbase") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("thirdbase_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(0);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -86,7 +83,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("shortstop") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("shortstop_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(0);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -95,7 +91,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("leftfield") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("leftfield_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(1);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -104,7 +99,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("centerfield") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("centerfield_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(1);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
     }
@@ -113,7 +107,6 @@ public class Position_btns : MonoBehaviour
     {
         TextAsset jsonText = Resources.Load("rightfield") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
-        defenseRatingsDisplay.SetFieldPosition(1);
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
         
@@ -149,6 +142,7 @@ public class Position_btns : MonoBehaviour
         ratingsDisplay.SetCurrentPlayer(4);
         ratingsDisplay.SetNewPosition();
         defenseRatingsDisplay.SetCurrentPlayer(4);
+        displayValidPositions.SetCurrentPlayer(4);
         startingPitcherDisplayBox.gameObject.SetActive(false);
         reliefPitcherDisplayBox.gameObject.SetActive(false);        
         batterDisplayBox.gameObject.SetActive(true);

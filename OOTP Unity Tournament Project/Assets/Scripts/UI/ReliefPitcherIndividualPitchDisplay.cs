@@ -129,20 +129,22 @@ public class ReliefPitcherIndividualPitchDisplay : MonoBehaviour
         //next go through the list and move the boxes to where they should be
         for(int i = 0; i < pitchRatingBlockList.Count; i++)
         {
+            int startPosY = 20;
+            int startPosX = -240;
+            int yOffset = 20;
+            int xOffset = 175;
+
             if(i < 4)
             {
-            int startPosY = 20;
             Transform block = pitchRatingBlockList[i].transform;
             var pos = block.localPosition;
-            block.localPosition = new Vector3(pos.x, startPosY - (25*i), 0);
+            block.localPosition = new Vector3(startPosX, startPosY - (yOffset*i), 0);
             }
             else
             {
-            int startPosX = -185;
-            int startPosY = 20;
             Transform block = pitchRatingBlockList[i].transform;
             var pos = block.localPosition;
-            block.localPosition = new Vector3(startPosX + 175, startPosY - (25*(i-4)), 0);
+            block.localPosition = new Vector3(startPosX + xOffset, startPosY - (yOffset*(i-4)), 0);
             }
             
         }
@@ -160,14 +162,32 @@ public class ReliefPitcherIndividualPitchDisplay : MonoBehaviour
             textBlock.text = playerRating.ToString();
             Transform ratingBarParent = block.transform.Find("Rating_bar").GetComponent<Transform>();
             Image ratingBarImage = ratingBarParent.transform.Find("Foreground_image").GetComponent<Image>();
-            ratingBarImage.fillAmount = (float)playerRating/maxRating;
-            pitchRatingBlockList.Add(block);
-            
-        }
-        else
-        {
-            block.gameObject.SetActive(false);
-        }
+            float ratingRatio = (float)playerRating/maxRating;
+            ratingBarImage.fillAmount = ratingRatio;
+
+            if (ratingRatio > 0.8f)
+            {
+                ratingBarImage.color = new Color32(0, 153, 255, 255);
+            }
+            else if (ratingRatio > 0.6f)
+            {
+                ratingBarImage.color = new Color32(101, 226, 18, 255);
+            }
+            else if (ratingRatio > 0.4f)
+            {
+                ratingBarImage.color = new Color32(255, 151, 0, 255);
+            }
+            else
+            {
+                ratingBarImage.color = new Color32(255, 89, 89, 255);
+            }
+                pitchRatingBlockList.Add(block);
+                
+            }
+            else
+            {
+                block.gameObject.SetActive(false);
+            }
     }
 
     public void SetNextPlayer()

@@ -31,6 +31,10 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
     [SerializeField] private GameObject veloDisplay;
     [SerializeField] private GameObject armSlotDisplay;
     [SerializeField] private GameObject groundBallProfileDisplay;
+    [SerializeField] private GameObject overRatingDisplay;
+    [SerializeField] private GameObject batsBlock;
+    [SerializeField] private GameObject throwsBlock;
+    [SerializeField] private GameObject combinatorBlock;
 
     private int playerStuffRating;
     private int playerMovementRating;
@@ -55,6 +59,10 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
     private string playerVeloRating;
     private int playerArmSlot;
     private int playerGroundballProfile;
+    private int playerOverallRating;
+    private int playerBats;
+    private int playerThrows;
+    private int playerCombinatorValue;
 
     public void Start()
     {
@@ -92,6 +100,11 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
         playerVeloRating = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].pBabipvR.ToString();
         playerArmSlot = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].pBabipvR;
         playerGroundballProfile = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].gb;
+        playerOverallRating = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].value;
+
+        playerBats = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].bats;
+        playerThrows = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].throws;
+        playerCombinatorValue = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].clvl;
         
     }
 
@@ -163,6 +176,13 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
             break;
         }
 
+        TextMeshProUGUI overallRatingDisplayText = overRatingDisplay.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        overallRatingDisplayText.text = playerOverallRating.ToString();
+
+        SetPlayerBats();
+        SetPlayerThrows();
+        SetPlayerCombinator();
+
 
         
     }
@@ -173,10 +193,100 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
         textBlock.text = playerRating.ToString();
         Transform ratingBarParent = block.transform.Find("Rating_bar").GetComponent<Transform>();
         Image ratingBarImage = ratingBarParent.transform.Find("Foreground_image").GetComponent<Image>();
-        ratingBarImage.fillAmount = (float)playerRating/maxRating;
+        float ratingRatio = (float)playerRating/maxRating;
+        ratingBarImage.fillAmount = ratingRatio;
 
+        if (ratingRatio > 0.8f)
+        {
+            ratingBarImage.color = new Color32(0, 153, 255, 255);
+        }
+        else if (ratingRatio > 0.6f)
+        {
+            ratingBarImage.color = new Color32(101, 226, 18, 255);
+        }
+        else if (ratingRatio > 0.4f)
+        {
+            ratingBarImage.color = new Color32(255, 151, 0, 255);
+        }
+        else
+        {
+            ratingBarImage.color = new Color32(255, 89, 89, 255);
+        }
         
+    }
+
+    private void SetPlayerBats()
+    {
+        TextMeshProUGUI batsText = batsBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
         
+        switch(playerBats)
+        {
+            case 1:
+                batsText.text = "Right";
+                break;
+            case 2:
+                batsText.text = "Left";
+                break;
+            case 3:
+                batsText.text = "Switch";
+                break;
+        }
+        
+    }
+
+    private void SetPlayerThrows()
+    {
+        TextMeshProUGUI throwsText = throwsBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        
+        switch(playerThrows)
+        {
+            case 1:
+                throwsText.text = "Right";
+                break;
+            case 2:
+                throwsText.text = "Left";
+                break;
+        }
+    }
+
+    private void SetPlayerCombinator()
+    {
+        TextMeshProUGUI combinatorText = combinatorBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        Image combinatorBackground = combinatorBlock.transform.Find("Combinator_bg").GetComponent<Image>();
+
+        if(playerCombinatorValue == -1)
+        {
+            combinatorText.text = "NA";
+        }
+        else
+        {
+            combinatorText.text = playerCombinatorValue.ToString();
+        }
+
+        switch(playerCombinatorValue)
+        {
+            case -1:
+                combinatorBackground.color = new Color32(178,178,179,255);
+                break;
+            case 0:
+                combinatorBackground.color = new Color32(229,2,13,255);
+                break;
+            case 1:
+                combinatorBackground.color = new Color32(239,115,2,255);
+                break;
+            case 2:
+                combinatorBackground.color = new Color32(245,180,1,255);
+                break;
+            case 3:
+                combinatorBackground.color = new Color32(61,205,54,255);
+                break;
+            case 4:
+                combinatorBackground.color = new Color32(0,189,191,255);
+                break;
+            case 5:
+                combinatorBackground.color = new Color32(1,116,231,255);
+                break;
+        }
     }
 
     public void SetNextPlayer()

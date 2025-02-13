@@ -91,7 +91,7 @@ public class StatsDisplay : MonoBehaviour
         playerBbpctString = FormatPctStat(jsonReader.myPlayerList.players[currentPlayer].bbp, 2);
         playerBpctRank = (int)jsonReader.myPlayerList.players[currentPlayer].bbpkRank;
 
-        playerBBpKString = FormatRateStat(jsonReader.myPlayerList.players[currentPlayer].bbpk, 3);
+        playerBBpKString = FormatCountingStat(jsonReader.myPlayerList.players[currentPlayer].bbpk, 2);
         playerBBpKRank = (int)jsonReader.myPlayerList.players[currentPlayer].bbpkRank;
 
         playerSBpctString = FormatPctStat(jsonReader.myPlayerList.players[currentPlayer].sbp, 2);

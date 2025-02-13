@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
+using System.Runtime.InteropServices;
 
 public class RatingsDisplay : MonoBehaviour
 {
@@ -38,6 +40,10 @@ public class RatingsDisplay : MonoBehaviour
     [SerializeField] GameObject stealAggRatingBlock;
     [SerializeField] GameObject stealAbilityRatingBlock;
     [SerializeField] GameObject baserunningRatingBlock;
+    [SerializeField] GameObject overallRatingBlock;
+    [SerializeField] GameObject batsBlock;
+    [SerializeField] GameObject throwsBlock;
+    [SerializeField] GameObject combinatorBlock;
 
 
     private int minContact;
@@ -113,6 +119,10 @@ public class RatingsDisplay : MonoBehaviour
     private int playerStealAggRating;
     private int playerStealAbilityRating;
     private int playerBaserunningRating;
+    private int playerOverallRating;
+    private int playerBats;
+    private int playerThrows;
+    private int playerCombinatorValue;
 
 
     
@@ -178,6 +188,7 @@ public class RatingsDisplay : MonoBehaviour
         minStealAbility = jsonReader.myPositionRatingsList.ratings[0].steal_min;
         maxBaserunning = jsonReader.myPositionRatingsList.ratings[0].baserunning_max;
         minBaserunning = jsonReader.myPositionRatingsList.ratings[0].baserunning_min;
+          
         
 
     }
@@ -212,6 +223,18 @@ public class RatingsDisplay : MonoBehaviour
         DisplayRating(stealAbilityRatingBlock, playerStealAbilityRating, maxStealAbility, minStealAbility);
         DisplayRating(baserunningRatingBlock, playerBaserunningRating, maxBaserunning, minBaserunning);
 
+        TextMeshProUGUI overallRatingText = overallRatingBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        overallRatingText.text = playerOverallRating.ToString();
+
+        SetOverallRatingColor(playerOverallRating);
+        SetPlayerBats();
+        SetPlayerThrows();
+        SetPlayerCombinator();
+        
+
+        
+        
+
         
 
     }
@@ -243,8 +266,87 @@ public class RatingsDisplay : MonoBehaviour
         playerStealAggRating = jsonReader.myPlayerList.players[currentPlayer].stealRate;
         playerStealAbilityRating = jsonReader.myPlayerList.players[currentPlayer].stealing;
         playerBaserunningRating = jsonReader.myPlayerList.players[currentPlayer].baserunning;
+        playerOverallRating = jsonReader.myPlayerList.players[currentPlayer].value;
+
+        playerBats = jsonReader.myPlayerList.players[currentPlayer].bats;
+        playerThrows = jsonReader.myPlayerList.players[currentPlayer].throws;
+        playerCombinatorValue = jsonReader.myPlayerList.players[currentPlayer].clvl;
 
 
+    }
+
+    private void SetPlayerBats()
+    {
+        TextMeshProUGUI batsText = batsBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        
+        switch(playerBats)
+        {
+            case 1:
+                batsText.text = "Right";
+                break;
+            case 2:
+                batsText.text = "Left";
+                break;
+            case 3:
+                batsText.text = "Switch";
+                break;
+        }
+        
+    }
+
+    private void SetPlayerThrows()
+    {
+        TextMeshProUGUI throwsText = throwsBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        
+        switch(playerThrows)
+        {
+            case 1:
+                throwsText.text = "Right";
+                break;
+            case 2:
+                throwsText.text = "Left";
+                break;
+        }
+    }
+
+    private void SetPlayerCombinator()
+    {
+        TextMeshProUGUI combinatorText = combinatorBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        Image combinatorBackground = combinatorBlock.transform.Find("Combinator_bg").GetComponent<Image>();
+
+        if(playerCombinatorValue == -1)
+        {
+            combinatorText.text = "NA";
+        }
+        else
+        {
+            combinatorText.text = playerCombinatorValue.ToString();
+        }
+
+        switch(playerCombinatorValue)
+        {
+            case -1:
+                combinatorBackground.color = new Color32(178,178,179,255);
+                break;
+            case 0:
+                combinatorBackground.color = new Color32(229,2,13,255);
+                break;
+            case 1:
+                combinatorBackground.color = new Color32(239,115,2,255);
+                break;
+            case 2:
+                combinatorBackground.color = new Color32(245,180,1,255);
+                break;
+            case 3:
+                combinatorBackground.color = new Color32(61,205,54,255);
+                break;
+            case 4:
+                combinatorBackground.color = new Color32(0,189,191,255);
+                break;
+            case 5:
+                combinatorBackground.color = new Color32(1,116,231,255);
+                break;
+        }
     }
 
     
@@ -255,8 +357,68 @@ public class RatingsDisplay : MonoBehaviour
         ratingTextBox.text = rating.ToString();
         Transform ratingBarParent = ratingBlock.transform.Find("Rating_bar").GetComponent<Transform>();
         Image ratingBarImage = ratingBarParent.transform.Find("Foreground_image").GetComponent<Image>();
-        ratingBarImage.fillAmount = (float)(rating-minRating)/(maxRating-minRating);
+        float ratingRatio = (float)(rating-minRating)/(maxRating-minRating);
+        ratingBarImage.fillAmount = ratingRatio;
+
+        if (ratingRatio > 0.8f)
+        {
+            ratingBarImage.color = new Color32(0, 153, 255, 255);
+        }
+        else if (ratingRatio > 0.6f)
+        {
+            ratingBarImage.color = new Color32(101, 226, 18, 255);
+        }
+        else if (ratingRatio > 0.4f)
+        {
+            ratingBarImage.color = new Color32(255, 151, 0, 255);
+        }
+        else
+        {
+            ratingBarImage.color = new Color32(255, 89, 89, 255);
+        }
         
+    }
+
+    private void SetOverallRatingColor(int rating)
+    {
+        Image ratingImage = overallRatingBlock.transform.Find("Rating_image").GetComponent<Image>();
+        TextMeshProUGUI ratingText = overallRatingBlock.transform.Find("Rating_text").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI overallText = overallRatingBlock.transform.Find("Overall_text").GetComponent<TextMeshProUGUI>();
+
+
+        switch(rating)
+        {
+            case >= 100: 
+                ratingImage.color = new Color32(30,21,6,255);
+                ratingText.color = new Color32(151,98,23,255);   
+                overallText.color = new Color32(151,98,23,255);               
+                break;
+            case >= 90:
+                ratingImage.color = new Color32(62,159,176,255);
+                ratingText.color = Color.white;
+                overallText.color = Color.white;
+                break;
+            case >= 80:
+                ratingImage.color = new Color32(221,158, 51,255);
+                ratingText.color = Color.white;
+                overallText.color = Color.white;
+                break;
+            case >= 70:
+                ratingImage.color = new Color32(140,158,165,255);
+                ratingText.color = Color.white;
+                overallText.color = Color.white;
+                break;
+            case >= 60:
+                ratingImage.color = new Color32(176,101,64,255);
+                ratingText.color = Color.white;
+                overallText.color = Color.white;
+                break;
+            default:
+                ratingImage.color = new Color32(95,94,94,255);
+                ratingText.color = Color.white;
+                overallText.color = Color.white;
+                break;
+        }
     }
 
     public void SetNextPlayer()

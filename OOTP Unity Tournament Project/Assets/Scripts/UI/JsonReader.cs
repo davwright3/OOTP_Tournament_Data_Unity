@@ -34,6 +34,17 @@ public class JsonReader : MonoBehaviour
         public int cid;
         public string title;
         public int value;
+        public int bats;
+        public int throws;
+        public int learnC;
+        public int learn1B;
+        public int learn2B;
+        public int learn3B;
+        public int learnSS;
+        public int learnLF;
+        public int learnCF;
+        public int learnRF;
+        public int clvl;
         public int price;
         public int pa;
         public float war;
@@ -99,6 +110,7 @@ public class JsonReader : MonoBehaviour
         public int outfRange;
         public int outfError;
         public int outfArm;
+        
 
     }
 
@@ -180,6 +192,11 @@ public class JsonReader : MonoBehaviour
     public class StartingPitcher{
         public int cid;
         public string title;
+        public int value;
+        public int price;
+        public int bats;
+        public int throws;
+        public int clvl;
         public float fip;
         public float war;
         public float ipc;
@@ -240,6 +257,10 @@ public class JsonReader : MonoBehaviour
     public class ReliefPitcher{
         public int cid;
         public string title;
+        public int value;
+        public int bats;
+        public int throws;
+        public int clvl;
         public float fip;
         public float era;
         public float war;

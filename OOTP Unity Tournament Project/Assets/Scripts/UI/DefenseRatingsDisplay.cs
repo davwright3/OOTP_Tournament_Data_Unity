@@ -84,7 +84,6 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     private void Start()
     {
-        SetFieldPosition(2);
         SetDefensiveRatings();
         DisplayDefensiveRatings();
     }
@@ -146,7 +145,25 @@ public class DefenseRatingsDisplay : MonoBehaviour
         ratingTextBox.text = rating.ToString();
         Transform ratingBarParent = ratingBlock.transform.Find("Rating_bar").GetComponent<Transform>();
         Image ratingBarImage = ratingBarParent.transform.Find("Foreground_image").GetComponent<Image>();
-        ratingBarImage.fillAmount = (float)(rating-minRating)/(maxRating-minRating);
+        float ratingRatio = (float)(rating-minRating)/(maxRating-minRating);
+        ratingBarImage.fillAmount = ratingRatio;
+
+        if (ratingRatio > 0.8f)
+        {
+            ratingBarImage.color = new Color32(0, 153, 255, 255);
+        }
+        else if (ratingRatio > 0.6f)
+        {
+            ratingBarImage.color = new Color32(101, 226, 18, 255);
+        }
+        else if (ratingRatio > 0.4f)
+        {
+            ratingBarImage.color = new Color32(255, 151, 0, 255);
+        }
+        else
+        {
+            ratingBarImage.color = new Color32(255, 89, 89, 255);
+        }
         
     }
 
@@ -189,7 +206,7 @@ public class DefenseRatingsDisplay : MonoBehaviour
         DisplayDefensiveRatings();
     }
 
-    public void SetFieldPosition(int positionToSet)
+    /*public void SetFieldPosition(int positionToSet)
     {
         fieldPosition = (FieldPosition)positionToSet;
 
@@ -213,7 +230,8 @@ public class DefenseRatingsDisplay : MonoBehaviour
         }
 
         
-    }   
+    }  
+    */ 
 }
 
 [Serializable]

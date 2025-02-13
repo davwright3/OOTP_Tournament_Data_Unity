@@ -8,6 +8,7 @@ public class Next_btn : MonoBehaviour
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private RatingsDisplay ratingsDisplay;
     [SerializeField] private DefenseRatingsDisplay defenseRatingsDisplay;
+    [SerializeField] private DisplayValidPositions displayValidPositions;
     [SerializeField] private StartingPitcherStatsDisplay startingPitcherStatsDisplay;
     [SerializeField] private StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
     [SerializeField] private StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
@@ -32,6 +33,7 @@ public class Next_btn : MonoBehaviour
                 statsDisplay.SetNextPlayer();
                 ratingsDisplay.SetNextPlayer();
                 defenseRatingsDisplay.SetNextPlayer();
+                displayValidPositions.SetNextPlayer();
                 break;
 
             case PositionDisplay.startingPitcher:
