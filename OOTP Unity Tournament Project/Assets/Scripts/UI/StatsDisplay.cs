@@ -23,7 +23,9 @@ public class StatsDisplay : MonoBehaviour
     [SerializeField] private GameObject playerSBpBlock;
     [SerializeField] private GameObject playerSBBlock;
     [SerializeField] private GameObject playerWARBlock;
+    [SerializeField] private GameObject playerHRBlock;
     [SerializeField] private TextMeshProUGUI playerPaText;
+
   
     private string playerAverageString; 
     private int playerAverageRank;
@@ -49,6 +51,8 @@ public class StatsDisplay : MonoBehaviour
     private int playerWarRank;
     private int playerCid;
     private int playerPa;
+    private string playerHRString;
+    private int playerHRRank;
     
     
 
@@ -103,6 +107,9 @@ public class StatsDisplay : MonoBehaviour
         playerWarString = FormatCountingStat(jsonReader.myPlayerList.players[currentPlayer].war, 2);
         playerWarRank = (int)jsonReader.myPlayerList.players[currentPlayer].warRank;
 
+        playerHRString = FormatCountingStat(JsonReader.Instance.myPlayerList.players[currentPlayer].hr, 2);
+        playerHRRank = (int)JsonReader.Instance.myPlayerList.players[currentPlayer].hrRank;
+
         playerCid = (int)jsonReader.myPlayerList.players[currentPlayer].cid;
         playerPa = (int)JsonReader.Instance.myPlayerList.players[currentPlayer].pa;
 
@@ -122,6 +129,7 @@ public class StatsDisplay : MonoBehaviour
         FillPctStatBlock(playerSBpctString, playerSBpctRank, playerSBpBlock);
         FillStatBlock(playerSBString, playerSBRank, playerSBBlock);
         FillStatBlock(playerWarString, playerWarRank, playerWARBlock);
+        FillStatBlock(playerHRString, playerHRRank, playerHRBlock);
         
         playerPaText.text = playerPa.ToString();
         
