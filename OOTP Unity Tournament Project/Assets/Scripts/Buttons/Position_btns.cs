@@ -14,6 +14,7 @@ public class Position_btns : MonoBehaviour
     [SerializeField] GameObject batterDisplayBox;
     [SerializeField] GameObject startingPitcherDisplayBox;
     [SerializeField] GameObject reliefPitcherDisplayBox;
+    [SerializeField] GameObject leaguePitchingStatsDisplay;
     [SerializeField] StartingPitcherStatsDisplay startingPitcherStatsDisplay;
     [SerializeField] StartingPitcherRatingsDisplay startingPitcherRatingsDisplay;
     [SerializeField] StartingPitcherIndividualPitchDisplay startingPitcherIndividualPitchDisplay;
@@ -120,6 +121,7 @@ public class Position_btns : MonoBehaviour
         startingPitcherStatsDisplay.SetCurrentPlayer(4);
         startingPitcherRatingsDisplay.SetCurrentPlayer(4);
         startingPitcherIndividualPitchDisplay.SetCurrentPlayer(4);
+        leaguePitchingStatsDisplay.gameObject.SetActive(true);
         PositionDisplaySelector.Instance.SetPositionDisplay(1);
 
     }
@@ -132,6 +134,7 @@ public class Position_btns : MonoBehaviour
         reliefPitcherStatsDisplay.SetCurrentPlayer(4);
         reliefPitcherRatingsDisplay.SetCurrentPlayer(4);
         reliefPitcherIndividualPitchDisplay.SetCurrentPlayer(4);
+        leaguePitchingStatsDisplay.gameObject.SetActive(true);
         PositionDisplaySelector.Instance.SetPositionDisplay(2);
     }
 
@@ -146,6 +149,7 @@ public class Position_btns : MonoBehaviour
         startingPitcherDisplayBox.gameObject.SetActive(false);
         reliefPitcherDisplayBox.gameObject.SetActive(false);        
         batterDisplayBox.gameObject.SetActive(true);
+        leaguePitchingStatsDisplay.gameObject.SetActive(false);
         PositionDisplaySelector.Instance.SetPositionDisplay(0);
 
 
