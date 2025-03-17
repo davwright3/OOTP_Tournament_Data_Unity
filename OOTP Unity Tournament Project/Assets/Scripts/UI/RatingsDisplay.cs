@@ -130,6 +130,7 @@ public class RatingsDisplay : MonoBehaviour
 
     private void Start()
     {
+        SetCurrentPlayer(currentPlayer);
         SetPositionRatings();
         UpdateDisplay();
         
@@ -442,8 +443,16 @@ public class RatingsDisplay : MonoBehaviour
     
     public void SetCurrentPlayer(int player)
     {
-        currentPlayer = player;
-        UpdateDisplay();
+        if(player > jsonReader.GetPlayerListSize() -1)
+        {
+            currentPlayer = jsonReader.GetPlayerListSize()-1;
+            UpdateDisplay();
+        }
+        else{
+            currentPlayer = player;
+            UpdateDisplay();
+        }
+        
     }
 
     public void SetNewPosition()

@@ -59,6 +59,7 @@ public class JsonReader : MonoBehaviour
         public float sbp;
         public float sb;
         public float woba;
+        public float score;
         public float normWar;
         public float warRank;
         public float paRank;
@@ -73,6 +74,7 @@ public class JsonReader : MonoBehaviour
         public float sbpRank;
         public float sbRank;
         public float wobaRank;
+        public float score_rank;
         public int contact;
         public int gap;
         public int power;

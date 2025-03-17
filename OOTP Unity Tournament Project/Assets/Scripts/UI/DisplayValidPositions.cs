@@ -27,7 +27,7 @@ public class DisplayValidPositions : MonoBehaviour
 
     private void Start()
     {
-        UpdateDisplay();
+        SetCurrentPlayer(currentPlayer);
     }
 
 
@@ -55,7 +55,7 @@ public class DisplayValidPositions : MonoBehaviour
         if(validPosition == 1)
         {
             validImage.gameObject.SetActive(true);
-        invalidImage.gameObject.SetActive(false);
+            invalidImage.gameObject.SetActive(false);
         }
         else
         {
@@ -98,8 +98,16 @@ public class DisplayValidPositions : MonoBehaviour
 
     public void SetCurrentPlayer(int player)
     {
-        currentPlayer = player;
-        UpdateDisplay();
+        if(player > JsonReader.Instance.myPlayerList.players.Length-1)
+        {
+            currentPlayer = JsonReader.Instance.myPlayerList.players.Length-1;
+            UpdateDisplay();
+        }
+        else{
+            currentPlayer = player;
+            UpdateDisplay();
+        }
+        
     }
 
 }

@@ -60,8 +60,8 @@ public class StatsDisplay : MonoBehaviour
 
     void Start() {
             
-        UpdateDisplay();
-        
+        SetCurrentPlayer(currentPlayer);
+                
     }
 
     private void UpdateDisplay()
@@ -144,8 +144,8 @@ public class StatsDisplay : MonoBehaviour
 
         Image image = statBlock.GetComponentInChildren<Image>();
         if(statRank <=3)
-        {
-            image.color = Color.green;
+        {            
+            image.color = new Color32(154,239,160,255);
         }
         else
         {
@@ -164,7 +164,7 @@ public class StatsDisplay : MonoBehaviour
         Image image = statBlock.GetComponentInChildren<Image>();
         if(statRank <=3)
         {
-            image.color = Color.green;
+            image.color = new Color32(154,239,160,255);
         }
         else
         {
@@ -261,7 +261,16 @@ public class StatsDisplay : MonoBehaviour
 
     public void SetCurrentPlayer(int playerRank)
     {
-        currentPlayer = playerRank;
-        UpdateDisplay();
+        
+        if(playerRank < jsonReader.myPlayerList.players.Length -1)
+        {
+            currentPlayer = playerRank;
+            UpdateDisplay();
+        }
+        else{
+            currentPlayer = jsonReader.myPlayerList.players.Length -1;
+            UpdateDisplay();
+
+        }
     }
 }

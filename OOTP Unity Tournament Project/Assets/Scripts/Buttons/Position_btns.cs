@@ -24,26 +24,19 @@ public class Position_btns : MonoBehaviour
 
 
     [SerializeField] Button m_catcherBtn;
-    [SerializeField] Button m_firstBaseBtn;
-    [SerializeField] Button m_secondBaseBtn;
-    [SerializeField] Button m_thirdBaseBtn;
-    [SerializeField] Button m_shortstopBtn;
-    [SerializeField] Button m_LeftFieldBtn;
-    [SerializeField] Button m_CenterFieldBtn;
-    [SerializeField] Button m_RightFieldBtn;
+    [SerializeField] Button m_cornerInfieldBtn;
+    [SerializeField] Button m_middleInfieldBtn;
+    [SerializeField] Button m_OutfieldBtn;
     [SerializeField] Button m_StartingPitcherBtn;
     [SerializeField] Button m_ReliefPitcherBtn;
 
+    
     private void Start()
     {
         m_catcherBtn.onClick.AddListener(SetCatcher);
-        m_firstBaseBtn.onClick.AddListener(SetFirstBase);
-        m_secondBaseBtn.onClick.AddListener(SetSecondBase);
-        m_thirdBaseBtn.onClick.AddListener(SetThirdBase);
-        m_shortstopBtn.onClick.AddListener(SetShortstop);
-        m_LeftFieldBtn.onClick.AddListener(SetLeftField);
-        m_CenterFieldBtn.onClick.AddListener(SetCenterField);
-        m_RightFieldBtn.onClick.AddListener(SetRightField);
+        m_cornerInfieldBtn.onClick.AddListener(SetCornerInfield);
+        m_middleInfieldBtn.onClick.AddListener(SetMiddleInfield);
+        m_OutfieldBtn.onClick.AddListener(SetOutfield);
         m_StartingPitcherBtn.onClick.AddListener(SetStartingPitcher);
         m_ReliefPitcherBtn.onClick.AddListener(SetReliefPItcher);
     }
@@ -56,61 +49,28 @@ public class Position_btns : MonoBehaviour
         SetNewPosition();
     }
 
-    private void SetFirstBase()
+    private void SetMiddleInfield()
     {
-        TextAsset jsonText = Resources.Load("firstbase") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("firstbase_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetSecondBase()
-    {
-        TextAsset jsonText = Resources.Load("secondbase") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("secondbase_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetThirdBase()
-    {
-        TextAsset jsonText = Resources.Load("thirdbase") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("thirdbase_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetShortstop()
-    {
-        TextAsset jsonText = Resources.Load("shortstop") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("shortstop_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetLeftField()
-    {
-        TextAsset jsonText = Resources.Load("leftfield") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("leftfield_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetCenterField()
-    {
-        TextAsset jsonText = Resources.Load("centerfield") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("centerfield_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
-        SetNewPosition();
-    }
-
-    private void SetRightField()
-    {
-        TextAsset jsonText = Resources.Load("rightfield") as TextAsset;
+        TextAsset jsonText = Resources.Load("middle_infield") as TextAsset;
         TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
         jsonReader.ChangePosition(jsonText, jsonRatingsText);
         SetNewPosition();
-        
+    }
+
+    private void SetCornerInfield()
+    {
+        TextAsset jsonText = Resources.Load("corner_infield") as TextAsset;
+        TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
+        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        SetNewPosition();
+    }
+
+    private void SetOutfield()
+    {
+        TextAsset jsonText = Resources.Load("all_outfield") as TextAsset;
+        TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
+        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        SetNewPosition();
     }
 
     private void SetStartingPitcher()

@@ -84,6 +84,7 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     private void Start()
     {
+        SetCurrentPlayer(currentPlayer);
         SetDefensiveRatings();
         DisplayDefensiveRatings();
     }
@@ -202,8 +203,16 @@ public class DefenseRatingsDisplay : MonoBehaviour
 
     public void SetCurrentPlayer(int player)
     {
-        currentPlayer = player;
-        DisplayDefensiveRatings();
+        if(player > jsonReader.GetPlayerListSize()-1)
+        {
+            currentPlayer = jsonReader.GetPlayerListSize() -1;
+            DisplayDefensiveRatings();
+        }
+        else{
+            currentPlayer = player;
+            DisplayDefensiveRatings();
+        }
+        
     }
 
     /*public void SetFieldPosition(int positionToSet)

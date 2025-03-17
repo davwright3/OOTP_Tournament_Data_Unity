@@ -51,7 +51,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
 
     private void Start()
     {
-        UpdateDisplay();
+        SetCurrentPlayer(currentPlayer);
     }
 
     private void UpdateDisplay()
@@ -153,8 +153,16 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
 
     public void SetCurrentPlayer(int playerToSet)
     {
-        currentPlayer = playerToSet;
-        UpdateDisplay();
+        if(playerToSet > JsonReader.Instance.myReliefPitcherList.relief_pitchers.Length -1)
+        {
+            currentPlayer = JsonReader.Instance.myReliefPitcherList.relief_pitchers.Length -1;
+            UpdateDisplay();
+        }
+        else{
+            currentPlayer = playerToSet;
+            UpdateDisplay();
+        }
+        
     }
 
     

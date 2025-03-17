@@ -61,6 +61,7 @@ public class ReliefPitcherIndividualPitchDisplay : MonoBehaviour
 
     private void Start()
     {
+        SetCurrentPlayer(currentPlayer);
         SetLeagueRatings();
         DisplayIndividualPitches();
 
@@ -210,7 +211,15 @@ public class ReliefPitcherIndividualPitchDisplay : MonoBehaviour
 
     public void SetCurrentPlayer(int playerToSet)
     {
-        currentPlayer = playerToSet;
-        DisplayIndividualPitches();
+        if(playerToSet > JsonReader.Instance.GetReliefpitcherListSize()-1)
+        {
+            currentPlayer = JsonReader.Instance.GetReliefpitcherListSize()-1;
+            DisplayIndividualPitches();
+        }
+        else{
+            currentPlayer = playerToSet;
+            DisplayIndividualPitches();
+        }
+        
     }
 }
