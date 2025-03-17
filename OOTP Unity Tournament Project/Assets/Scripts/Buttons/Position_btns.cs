@@ -44,32 +44,28 @@ public class Position_btns : MonoBehaviour
     private void SetCatcher()
     {
         TextAsset jsonText = Resources.Load("catchers") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("catcher_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        jsonReader.ChangePosition(jsonText);
         SetNewPosition();
     }
 
     private void SetMiddleInfield()
     {
         TextAsset jsonText = Resources.Load("middle_infield") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        jsonReader.ChangePosition(jsonText);
         SetNewPosition();
     }
 
     private void SetCornerInfield()
     {
         TextAsset jsonText = Resources.Load("corner_infield") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        jsonReader.ChangePosition(jsonText);
         SetNewPosition();
     }
 
     private void SetOutfield()
     {
         TextAsset jsonText = Resources.Load("all_outfield") as TextAsset;
-        TextAsset jsonRatingsText = Resources.Load("rightfield_ratings") as TextAsset;
-        jsonReader.ChangePosition(jsonText, jsonRatingsText);
+        jsonReader.ChangePosition(jsonText);
         SetNewPosition();
     }
 

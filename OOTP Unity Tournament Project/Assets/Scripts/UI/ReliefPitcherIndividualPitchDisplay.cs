@@ -166,7 +166,11 @@ public class ReliefPitcherIndividualPitchDisplay : MonoBehaviour
             float ratingRatio = (float)playerRating/maxRating;
             ratingBarImage.fillAmount = ratingRatio;
 
-            if (ratingRatio > 0.8f)
+            if(ratingRatio > .9f)
+            {
+            ratingBarImage.color = new Color32(191, 77, 255, 255);
+            }
+            else if (ratingRatio > 0.8f)
             {
                 ratingBarImage.color = new Color32(0, 153, 255, 255);
             }

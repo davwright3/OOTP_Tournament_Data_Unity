@@ -44,7 +44,7 @@ public class JsonReader : MonoBehaviour
         public int learnLF;
         public int learnCF;
         public int learnRF;
-        public int clvl;
+        public int vlvl;
         public int price;
         public int pa;
         public float war;
@@ -487,12 +487,11 @@ public class JsonReader : MonoBehaviour
     }
     
 
-    public void ChangePosition(TextAsset jsonText, TextAsset jsonRatingsText)
+    public void ChangePosition(TextAsset jsonText)
     {
         textJSON = jsonText;
-        ratingsTextJSON = jsonRatingsText;
         UpdatePlayerList();
-        UpdateRatingsList();
+        
 
     }
 

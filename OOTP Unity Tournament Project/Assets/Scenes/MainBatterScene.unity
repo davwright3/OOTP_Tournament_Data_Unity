@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textJSON: {fileID: 4900000, guid: 31b104bb3e1f11f4790eddd800e3b2b6, type: 3}
-  ratingsTextJSON: {fileID: 4900000, guid: dcc881899e6a66d45a6d6ae913076129, type: 3}
+  ratingsTextJSON: {fileID: 4900000, guid: b408c0c68ff917c42be47cc5146051fb, type: 3}
   startingPitcherTextJson: {fileID: 4900000, guid: e4fea502331ddf445876dfd5cd33e06a, type: 3}
   reliefPitcherTextJson: {fileID: 4900000, guid: cce295554862d5d44af8645083bfce93, type: 3}
   pitcherRatingsJson: {fileID: 4900000, guid: afd66639df4f79c4d9857ea26f083d74, type: 3}

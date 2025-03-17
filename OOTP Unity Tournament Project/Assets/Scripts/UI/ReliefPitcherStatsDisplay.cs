@@ -125,7 +125,7 @@ public class ReliefPitcherStatsDisplay : MonoBehaviour
         Image image = statBlock.GetComponentInChildren<Image>();
         if(rank <=3)
         {
-            image.color = Color.green;
+            image.color = new Color32(154,239,160,255);;
         }
         else
         {

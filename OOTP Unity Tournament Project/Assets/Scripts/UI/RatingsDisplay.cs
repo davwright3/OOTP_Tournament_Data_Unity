@@ -271,7 +271,7 @@ public class RatingsDisplay : MonoBehaviour
 
         playerBats = jsonReader.myPlayerList.players[currentPlayer].bats;
         playerThrows = jsonReader.myPlayerList.players[currentPlayer].throws;
-        playerCombinatorValue = jsonReader.myPlayerList.players[currentPlayer].clvl;
+        playerCombinatorValue = jsonReader.myPlayerList.players[currentPlayer].vlvl;
 
 
     }
@@ -361,7 +361,11 @@ public class RatingsDisplay : MonoBehaviour
         float ratingRatio = (float)(rating-minRating)/(maxRating-minRating);
         ratingBarImage.fillAmount = ratingRatio;
 
-        if (ratingRatio > 0.8f)
+        if(ratingRatio > .9f)
+        {
+            ratingBarImage.color = new Color32(191, 77, 255, 255);
+        }
+        else if (ratingRatio > 0.8f)
         {
             ratingBarImage.color = new Color32(0, 153, 255, 255);
         }
