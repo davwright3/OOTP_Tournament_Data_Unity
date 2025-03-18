@@ -113,7 +113,7 @@ public class StartingPitcherRatingsDisplay : MonoBehaviour
 
         playerBats = JsonReader.Instance.myStartingPitcherlist.starting_pitchers[currentPlayer].bats;
         playerThrows = JsonReader.Instance.myStartingPitcherlist.starting_pitchers[currentPlayer].throws;
-        playerCombinatorValue = JsonReader.Instance.myStartingPitcherlist.starting_pitchers[currentPlayer].clvl;
+        playerCombinatorValue = JsonReader.Instance.myStartingPitcherlist.starting_pitchers[currentPlayer].vlvl;
         
     }
 

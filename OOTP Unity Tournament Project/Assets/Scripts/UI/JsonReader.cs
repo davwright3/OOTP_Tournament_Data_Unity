@@ -198,7 +198,7 @@ public class JsonReader : MonoBehaviour
         public int price;
         public int bats;
         public int throws;
-        public int clvl;
+        public int vlvl;
         public float fip;
         public float war;
         public float ipc;
@@ -262,7 +262,7 @@ public class JsonReader : MonoBehaviour
         public int value;
         public int bats;
         public int throws;
-        public int clvl;
+        public int vlvl;
         public float fip;
         public float era;
         public float war;

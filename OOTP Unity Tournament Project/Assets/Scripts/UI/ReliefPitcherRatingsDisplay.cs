@@ -105,7 +105,7 @@ public class ReliefPitcherRatingsDisplay : MonoBehaviour
 
         playerBats = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].bats;
         playerThrows = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].throws;
-        playerCombinatorValue = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].clvl;
+        playerCombinatorValue = JsonReader.Instance.myReliefPitcherList.relief_pitchers[currentPlayer].vlvl;
         
     }
 
